@@ -1,0 +1,505 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+//read   yes
+//print  yes
+//add    yes
+//mul    yes 
+//sub
+//div
+//mov    yes
+//jumps
+
+
+int main(int argc, char* argv[]) {
+   a
+   FILE *file = fopen(argv[1], "r");
+    int ax = 0, bx = 0, cx = 0, dx = 0;
+    int n = 0;
+
+
+    char *big[100];
+    for (int i = 0; i < 99; i++) {
+        big[i] = malloc(50 * sizeof(char));
+        fgets(big[i], 50, file);
+	//printf(big[i]);
+    }
+
+	/*char instr[100];
+    	for (int j = 0; j < 99; j++){
+	scanf("%s", &instr[j]);
+	n = atoi(instr);
+	printf("%d", n);
+    	}
+	
+	printf("here");
+*/
+
+	
+        
+        	
+    for (int i = 0; i < 99; i++) {
+        char *token = strtok(big[i], " \n");
+        if (strcmp(token, "read") == 0) {
+		 
+	scanf("%d", &n);
+	//printf("here");
+//EXTRA PRINT STATEMENT
+	//printf("here");	
+            while (token != NULL) {
+                token = strtok(NULL, " \n");
+		//printf(token);
+                if (strcmp(token, "ax") == 0) {
+                    ax = n;
+		    //printf("%d", n);
+                    break;
+                } else if (strcmp(token, "bx") == 0) {
+                    bx = n;
+                    break;
+                } else if (strcmp(token, "cx") == 0) {
+                    cx = n;
+                    break;
+                } else if (strcmp(token, "dx") == 0) {
+                    dx = n;
+                    break;
+                }
+            }
+        }
+        else if (strcmp(token, "print") == 0) {
+            while (token != NULL) {
+                token = strtok(NULL, " \n");
+		    if (strcmp(token, "ax") == 0) {
+                        printf("%d", ax);
+			break;
+		    }
+
+                    else if (strcmp(token, "bx") == 0) {
+                        printf("%d", bx);
+			break;
+		    }
+
+                    else if (strcmp(token, "cx") == 0) {
+                        printf("%d", cx);
+			break;
+		    }
+
+                    else if (strcmp(token, "dx") == 0) {
+                        printf("%d", dx);
+			break;
+                    }
+		    else {
+			int printelement = 0;
+			printelement = atoi(token);
+			printf("%d", printelement);
+
+		   }
+            }
+        }
+
+        else if (strcmp(token, "add") == 0) { //START OF ADD
+            while (token != NULL) {
+                token = strtok(NULL, " \n");
+                
+
+		if (strcmp(token, "ax") == 0) { //if ax
+                    token = strtok(NULL, " \n");
+                    if (strcmp(token, "ax") == 0) {
+                        ax = ax + ax;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {// if bx
+                        bx = bx + ax;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx + ax;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx + ax;
+                        break;
+                    }
+
+                }
+		else if (strcmp(token, "bx") == 0) { //is bx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax + bx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx + bx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx + bx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx + bx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "cx") == 0) { //is cx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax + cx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx + cx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx + cx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx + cx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "dx") == 0) { //is dx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax + dx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx + dx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx + dx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx + dx;
+                        break;
+                    }
+
+                }
+		else {
+		int addelement = 0;
+		addelement = atoi(token);
+		token = strtok(NULL, " \n");
+		    if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax + addelement;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx + addelement;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx + addelement;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx + addelement;
+                        break;
+                    }
+           	}
+       	     } //END OF ADD
+
+   	 }
+	
+
+
+        else if (strcmp(token, "mul") == 0) { //START OF MUL
+            while (token != NULL) {
+                token = strtok(NULL, " \n");
+                
+
+		if (strcmp(token, "ax") == 0) { //if ax
+                    token = strtok(NULL, " \n");
+                    if (strcmp(token, "ax") == 0) {
+                        ax = ax * ax;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {// if bx
+                        bx = bx * ax;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx * ax;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx * ax;
+                        break;
+                    }
+
+                }
+		else if (strcmp(token, "bx") == 0) { //is bx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax * bx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx * bx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx * bx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx * bx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "cx") == 0) { //is cx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax * cx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx * cx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx * cx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx * cx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "dx") == 0) { //is dx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax * dx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx * dx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx * dx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx * dx;
+                        break;
+                    }
+
+                }
+		else {
+		int mulelement = 0;
+		mulelement = atoi(token);
+		token = strtok(NULL, " \n");
+		    if (strcmp(token, "ax") == 0) { //is ax
+                        ax = ax * mulelement;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx * mulelement;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx * mulelement;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx * mulelement;
+                        break;
+                    }
+		}
+            }
+        } //END OF MUL
+
+        else if (strcmp(token, "mov") == 0) { //START OF MOV
+            while (token != NULL) {
+                token = strtok(NULL, " \n");                
+
+		if (strcmp(token, "ax") == 0) { //if ax
+                    token = strtok(NULL, " \n");
+                    if (strcmp(token, "ax") == 0) {
+                        ax = ax;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {// if bx
+                        bx = ax;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = ax;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = ax;
+                        break;
+                    }
+
+                }
+		else if (strcmp(token, "bx") == 0) { //is bx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = bx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = bx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = bx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "cx") == 0) { //is cx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = cx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = cx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = cx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "dx") == 0) { //is dx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = dx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = dx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = dx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx;
+                        break;
+                    }
+
+                }
+		else {
+		int movelement = 0;
+		movelement = atoi(token);
+		token = strtok(NULL, " \n");
+		    if (strcmp(token, "ax") == 0) { //is ax
+                        ax = movelement;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = movelement;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = movelement;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = movelement;
+                        break;
+                    }
+            	}
+            } //END OF MOV
+	}
+
+    else if (strcmp(token, "sub") == 0) { //START OF SUB Y-X	
+            while (token != NULL) {
+                token = strtok(NULL, " \n");
+                
+
+		if (strcmp(token, "ax") == 0) { //if ax
+                    token = strtok(NULL, " \n");
+                    if (strcmp(token, "ax") == 0) {
+                        ax = ax - ax;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {// if bx
+                        bx = ax;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = ax;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = ax;
+                        break;
+                    }
+
+                }
+		else if (strcmp(token, "bx") == 0) { //is bx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = bx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = bx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = bx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = bx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "cx") == 0) { //is cx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = cx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = cx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = cx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = cx;
+                        break;
+                    }
+
+                }
+
+		else if (strcmp(token, "dx") == 0) { //is dx 
+                    token = strtok(NULL, " \n");
+                      if (strcmp(token, "ax") == 0) { //is ax
+                        ax = dx;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = dx;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = dx;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = dx;
+                        break;
+                    }
+
+                }
+		else {
+		int movelement = 0;
+		movelement = atoi(token);
+		token = strtok(NULL, " \n");
+		    if (strcmp(token, "ax") == 0) { //is ax
+                        ax = movelement;
+                        break;
+                    } else if (strcmp(token, "bx") == 0) {
+                        bx = movelement;
+                        break;
+                    } else if (strcmp(token, "cx") == 0) {
+                        cx = movelement;
+                        break;
+                    } else if (strcmp(token, "dx") == 0) {
+                        dx = movelement;
+                        break;
+                    }
+            	}
+            } //END OF MOV
+	}
+
+
+    }
+
+
+
+
+
+
+
+
+for (int i = 0; i < 99; i++){
+free(big[i]);
+}
+return 0;
+}
+
+
+
+
+
